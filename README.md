@@ -1,1 +1,3 @@
-# chenxi's fress-blog
+# 目的
+使用hexo搭建个人博客
+这个仓库是用来保存hexo的源码
