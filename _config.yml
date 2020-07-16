@@ -70,5 +70,5 @@ theme: fluid
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:   
     type: git
-    repository: git@git.coding.net:cxfree/cxfree.git
+    repository: git@github.com:chenxi-null/chenxi-null.github.io.git
     branch: master 
