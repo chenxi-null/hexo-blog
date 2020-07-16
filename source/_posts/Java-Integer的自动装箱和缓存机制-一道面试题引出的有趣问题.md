@@ -1,5 +1,5 @@
 title: Java Integer的自动装箱和缓存机制 -- 一道面试题引出的有趣问题
-author: ChenXi
+author: chenxi
 date: 2018-06-26 14:38:09
 tags:
 ---

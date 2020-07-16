@@ -1,5 +1,5 @@
 title: Java Integer的自动装箱和缓存机制 -- 由一套面试题引出的
-author: ChenXi
+author: chenxi
 tags:
   - java
 categories: []

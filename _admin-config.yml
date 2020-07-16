@@ -1,5 +1,5 @@
 options:
-  spellcheck: false
+  spellcheck: true
 editor:
   inputStyle: contenteditable
-  spellcheck: false
+  spellcheck: true
