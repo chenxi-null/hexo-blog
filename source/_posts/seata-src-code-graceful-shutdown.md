@@ -5,6 +5,7 @@ tags:
   - distributed
 categories: []
 date: 2020-06-05 17:00:00
+---
 
 ### 前言
 
@@ -17,11 +18,11 @@ Github 地址: https://github.com/seata/seata
 
 - 基于源码分析了 Seata 优雅停机的实现方式
 
-- 同时分析了 Spring 的优雅停机, 介绍了 Spring Context 的生命周期管理，顺带提及了其对于提高软件可测试性的意义
+- 同时分析了 Spring 的优雅停机, 介绍了 Spring Context 的生命周期管理，顺带提及了它对于提高软件可测试性的意义
 
 - 对比了 Dubbo 的优雅停机策略
 
-Seata 的停机模块和其实并没有涉及太多 Seata 本身的领域概念，本文更多的还是以 Seata 为引子，介绍了优雅停机在框架设计中的优秀实践。不熟悉 Seata 的同学也可以放心食用～
+Seata 的优雅停机模块其实并没有涉及太多 Seata 本身的领域概念，本文更多的还是以 Seata 为引子，介绍了优雅停机在框架设计中的优秀实践，不熟悉 Seata 的同学也可以放心食用～
 
 
 ---
