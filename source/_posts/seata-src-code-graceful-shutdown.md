@@ -97,7 +97,7 @@ private void registerSpringShutdownHook() {
     ShutdownHook.getInstance().addDisposable(TmRpcClient.getInstance(applicationId, txServiceGroup));
     ShutdownHook.getInstance().addDisposable(RmRpcClient.getInstance(applicationId, txServiceGroup));
 }
-``` 
+```
 
 注意这里有两个有意思的地方，分别是代码里标注[1]和[2]，下面我们来逐一分析：
 
