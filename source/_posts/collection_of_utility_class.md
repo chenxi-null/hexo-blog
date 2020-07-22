@@ -2,7 +2,8 @@ title: 提高代码简洁度的工具类合集
 author: chenxi
 tags:
   - clean-code
-categories: []
+categories: 
+  - clean-code
 date: 2020-02-24 15:40:00
 ---
 

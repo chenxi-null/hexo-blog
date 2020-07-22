@@ -1,7 +1,7 @@
-title: 'java枚举类初探: 反编译&语法糖'
+title: 'java 枚举类初探: 反编译&语法糖'
 author: chenxi
-tags: []
-categories: []
+tags: [java]
+categories: [java]
 date: 2016-09-04 20:55:00
 ---
 
@@ -13,7 +13,7 @@ date: 2016-09-04 20:55:00
 我对java语法糖的理解是这样的：可以看做编译器先把原来的enum类编译成“正常的java类”，然后再以正常的方式编译成字节码，所以字节码当然不知道有“语法糖”的存在啦，不知道我的理解有没有错，应该是没有什么大问题，如果有的话还请各位大神指正。
 为了更好的理解枚举类是怎么实现的，我先是按照书中对枚举类的定义写了一个对应于enum类的“正常的java类”，代码如下：
 
-```
+```java
 import java.lang.Enum;
 /*
 public enum TrueEnum {
@@ -39,7 +39,7 @@ public class MyEnum extends Enum { // 这样写肯定是通不过编译的，因
 不过还有一点值得注意的是，这篇文章没有指出enum类实现接口和添加抽象方法这两种情况，这样的话，枚举值就不是作为枚举类的实例了，而是作为枚举类的匿名子类的实现类。
 也就是说枚举值要么是Enum的直接子类要么是Enum的“孙子类”（这个词是我发明的，理解意思就好，蛤蛤），知道这点的话，下面这段Enum的源码就很好理解了：
 
-```
+```java
 // 得到枚举常量所属枚举类型的Class对象  
 public final Class<E> getDeclaringClass() {  
     Class clazz = getClass();  

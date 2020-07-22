@@ -3,7 +3,8 @@ author: chenxi
 tags:
   - seata
   - distributed
-categories: []
+categories: 
+  - distributed
 date: 2020-06-05 17:00:00
 ---
 

@@ -2,7 +2,8 @@ title: 记一次有趣的代码重构
 author: chenxi
 tags:
   - clean-code
-categories: []
+categories: 
+  - clean-code
 date: 2020-02-14 23:40:00
 ---
 

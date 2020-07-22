@@ -4,7 +4,7 @@ tags:
   - tdd
 categories: 
   - tdd
-date: 2019-02-14 23:40:00
+date: 2019-01-28 17:00:00
 ---
 
 # A Spock Tutorial for Javaer
@@ -146,7 +146,7 @@ def "events are published to all subscribers"() {
 
 Within the `then` and `expect` blocks, assertions are implicit
 
-#### some Shorthand (sugar syntax in Groovy)
+#### some Shorthand (syntactic sugar in Groovy)
 
  The test code wrote by Spock are more concise and easier to read. 
  There's less clutter, boilerplate code, and your test cases can be structured better.

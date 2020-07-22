@@ -2,7 +2,8 @@ title: 编程随想录 - 代码注释
 author: chenxi
 tags:
   - clean-code
-categories: []
+categories:
+  - clean-code
 date: 2019-07-02 16:00:00
 ---
 
