@@ -1,4 +1,4 @@
-title: 使用 hexo+Coding Pages 搭建个人博客
+title: 使用 Hexo + Coding Pages 搭建个人博客
 author: chenxi
 tags:
   - blog
