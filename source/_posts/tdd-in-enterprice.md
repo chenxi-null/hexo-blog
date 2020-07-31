@@ -50,7 +50,7 @@ date: 2019-04-04 15:30:00
 ### 2. 自我提升
 
 #### 测试驱动设计
-写出可测试性的代码, 提升模块化设计的能力，思考功能的边界, 模块的松耦合, 加深对项目的理解
+写出可测试性的代码, 提升模块化设计的能力，思考功能的边界、模块的松耦合, 加深对项目的理解
 
 #### 测试驱动成长
 - 测试是必备技能，是持续集成的基础，几乎所有讲敏捷开发的书都会提到 TDD
@@ -177,12 +177,22 @@ def "test makeAndDeliverCake"() {
 如果前期就写复杂的集成测试: 违背小步走原则，测试太耗时，影响开发节奏
 
 ### 测试即文档
+
 测试用例的可读性!
 
+Spock 是一款 BDD 风格的测试框架，语法简洁，借助 [Given-When-Then](https://martinfowler.com/bliki/GivenWhenThen.html) 风格的标签我们可以更清晰地定义测试代码所对应的功能代码，让我们更好地理解代码的意图：
+![](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a04d4579c0bb421da34a63743377622f~tplv-k3u1fbpfcp-zoom-1.image)
+
+Spock 来可以通过工具将测试用例导出为报告的形式！
+![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/87e91632cfd14474a74660e50839e0e1~tplv-k3u1fbpfcp-zoom-1.image)
+
 ### 把测试代码当成功能代码来写
-提取重复代码: 测试基类, 工具类  
-重复配置, 重复的 setup 和 cleanup 工具
-测试架构的设计
+测试架构的设计，提升代码的可复用性，Spring 生命周期管理等
+- 使用对象工厂等方式管理测试数据
+- 通过工具类、基类等方式提取重复代码和重复配置
+- 善用工具，避免重复轮子，提高代码简洁度，如 JUnit 的 `Rule`，Spring-Test 提供的各种测试注解、工具类
+
+---
 
 ## 测试场景及实践:
 
@@ -206,10 +216,14 @@ e.g. 使用 maven pom 文件中的 `profile` 标签进行多版本测试，比�
 ```
 
 
-### Spring 容器 🍃
+### Spring 容器
+[Spring-Test 官方文档](https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html#testcontext-framework)
+基于 Spring 的单元/集成测试也是个很大的话题，今天暂不展开
 
 ### 外部系统调用 
-DB, Redis, ZK, MQ, Http-Server
+DB, Redis, ZK, MQ, Http-Server, Dubbo
+
+在测试中可以使用内存中间件，比如内存 DB (H2)，内存 Redis，内存 ZK (`curator-test`)
 
 例如 mock 一个 http server:
 ```groovy
@@ -270,41 +284,58 @@ class WireMockTest extends Specification {
 }
 ```
 
+
 ### 异步场景
 - Java: [Awaitility](https://github.com/awaitility/awaitility)
-- Spock: `PollingConditions` 
+- Spock: `PollingConditions`, `AsyncConditions` 
+
 
 ### Interaction
-- Mock & Stub & Spy [link](http://spockframework.org/spock/docs/1.2/all_in_one.html#_interaction_based_testing)
-- Mock 静态方法: `PowerMock`
-- JUnit Rule `SystemOutRule`
-- 自己实现
+
+**interaction_based_testing** —— 基于交互行为的测试
+
+assert 对象的某个方法是否被调用过
+
+实现方式：
+
+- Mock 实例方法，比如 Java 的 `Mockito`, Spock 自带的 Mock API 等
+    - 理解 Mock & Stub & Spy 这三者的定义和区别  [spock-doc_interaction_based_testing](http://spockframework.org/spock/docs/1.2/all_in_one.html#_interaction_based_testing)
+
+- Mock 静态方法: 目前只有 `PowerMock` 支持
+
+- JUnit Rule `SystemOutRule`，通过断言控制台日志的方式来判断某个方法是否被调用过，不是很优雅，适合测试旧代码或者实在很难测试的场景
+
+- 或者自己实现
+
 
 ### 其他场景 
 [flaky-test](https://docs.qameta.io/allure/#_flaky_tests)
 - 被测试的事件不稳定, 有一定概率失败
 - 单独运行时正常，一起运行时失败，需要做好对象的清理工作
 
+---
 
 ## 测试工具:
 
 ### 测试框架：
 - [Spock](http://spockframework.org/spock/docs/1.2/all_in_one.html#_spock_primer)
-- [JUnit 5](https://junit.org/junit5/docs/current/user-guide/#writing-tests-assertions)       
+- [JUnit 5](https://junit.org/junit5/docs/current/user-guide/#writing-tests-assertions)，不推荐 `JUnit4`       
 
-工具目的：提升写测试的效率；让测试更易读    
+工具目的：提升写测试的效率；让测试代码可读性更强    
 
 ### 测试执行报告:
-- [Allure](http://allure.qatools.ru/): `mvn allure:server` 
-
+推荐一款工具 —— [Allure](http://allure.qatools.ru/)
+ 
+maven 原生的命令行输出不好阅读:
 ![命令行输出的测试结果不好阅读](https://user-gold-cdn.xitu.io/2019/10/25/16e00748a5dad9e7?w=2848&h=1606&f=png&s=451667)
 
-
+Allure 提供了 maven 插件的形式，运行 `mvn allure:server` 命令，可以在本地生成网页，展示测试报告，测试用例的执行结果更清晰、直观：
 ![Allure 展示执行结果](https://user-gold-cdn.xitu.io/2019/10/25/16e00756799f986f?w=2878&h=1544&f=png&s=644674)
 
 
+Allure 还可以和 Jenkins 集成，查看测试执行结果的趋势变化，更好地支持持续集成：
+
 ![Allure 展示测试用例耗时](https://user-gold-cdn.xitu.io/2019/10/25/16e0076c87e80345?w=2878&h=1558&f=png&s=225975)
 
-Allure 还可以和 Jenkins 集成，查看测试执行结果的趋势变化
 
 
