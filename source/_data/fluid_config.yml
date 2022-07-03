@@ -159,12 +159,12 @@ scroll_top_arrow:  # 向顶部滚动的箭头
 #---------------------------
 index:
   banner_img: /img/default.png  # 首页 Banner 头图，以下相同
-  banner_img_height: 100  # 头图高度，屏幕百分比，available: 0 - 100
+  banner_img_height: 25  # 头图高度，屏幕百分比，available: 0 - 100
   banner_mask_alpha: 0.3  # 头图黑色蒙版的透明度，available: 0 - 1.0， 0 是完全透明（无蒙版），1 是完全不透明
   post_default_img: '' # 默认的文章封面图，当没有指定 index_img 时会使用该图片，若都为空则不显示任何图片
   slogan:  # 首页副标题的独立设置
     enable: true  # 为 false 则不显示任何内容
-    text: 'Hello World'  # 为空则按 hexo config.subtitle 显示
+    text: '^_^'  # 为空则按 hexo config.subtitle 显示
   auto_excerpt:
     enable: true
   post_url_target: _self  # available: _blank | _self
@@ -186,7 +186,7 @@ page:
 #---------------------------
 post:  # 部分配置同时控制自定义页面，注意备注
   banner_img: /img/default.png
-  banner_img_height: 70  # available: 0 - 100
+  banner_img_height: 0  # available: 0 - 100
   banner_mask_alpha: 0.3  # available: 0 - 1.0
   meta:  # 文章标题下方的信息
     date:  # 文章日期
